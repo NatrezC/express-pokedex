@@ -1,0 +1,10 @@
+<h2>pokemon.name</h2>
+<img src="<%=pokemon.sprites.other.dream_world.front_default%>" width="300">
+<br>
+<p>Type:
+    <% pokemon.types.forEach(type=>{ %>
+        <%= type.type.name %>
+    <% }) %>
+</p>
+ 
+

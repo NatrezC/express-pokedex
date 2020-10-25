@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models')
+const axios = require('axios')
 
 // GET /pokemon - return a page with favorited Pokemon
 router.get('/', function(req, res) {
   // TODO: Get all records from the DB and render to view
-  res.render('pokemon/index.ejs')
+  db.pokemon.findAll()
+  .then(favorites=>{
+    res.render('pokemon/index', {faves: favorites})
+  }).catch(err=>{
+    console.log('you got another err', err)
+  })
   //res.send('Render a page of favorites here');
 });
 
@@ -24,5 +30,22 @@ router.post('/', function(req, res) {
   })
   // res.send(req.body);
 });
+
+router.get('/:idx', (req, res)=>{
+  db.pokemon.findOne({
+    where: {id: req.params.idx}
+  }).then(found =>{
+    const pokemonUrl = `http://pokeapi.co/api/v2/pokemon/${found.name}`
+    axios.get(pokemonUrl)
+    .then(response =>{
+      //res.send(response.data)
+      res.render('pokemon/show',{pokemon: response.data})
+    }).catch(err=>{
+      console.log('url err:------>', err)
+    })
+  }).catch(err=>{
+    console.log('Something wrong with your id route dummy', err)
+  })
+})
 
 module.exports = router;

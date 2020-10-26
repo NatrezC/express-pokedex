@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
   })
   .then(([created, wasCreated])=>{
     res.send(created)
+    //res.render(created)
   })
   .catch(err =>{
     console.log('You got an error dummy: ', err)

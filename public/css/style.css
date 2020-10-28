@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+
+body {
+    
+    font-size: large;
+    font-family: 'Amarante', Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.favepage{
+    background-image: url('https://wallpaperset.com/w/full/7/2/4/187210.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+
+.myfave{
+    color: rgb(75, 22, 22);
+    font-weight: bolder;
+}
+.mypokemon{
+    list-style-type: none;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin: 5%;
+}
+.whopokemon{
+    background-image: url('https://www.heraldscotland.com/resources/images/5283517/');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mainpage{
+    background-image: url('https://cutewallpaper.org/21/wallpaper-hd-pokemon/Pokemon-Wallpaper-Live-4K-Wallpapers.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: scroll;
+    height: 100vh;
+    width: 100vw;
+}
+#favorites{
+    font-size: xx-large;
+    font-weight: bold;
+    margin-top: 10%;
+}
+.allpokemon{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.titlefave {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;   
+}
+
+.thatpokemon{
+    margin-top: 25vh;
+    margin-right: 10vw;
+}
+.well{
+    background-color: aqua;
+    border-radius: 25%;
+    
+}
+
+#moves{
+    word-wrap: break-word;
+}
+
+span{
+    font-weight: bold;
+}

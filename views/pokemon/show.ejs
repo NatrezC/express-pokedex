@@ -1,10 +1,30 @@
-<h2>pokemon.name</h2>
-<img src="<%=pokemon.sprites.other.dream_world.front_default%>" width="300">
-<br>
-<p>Type:
-    <% pokemon.types.forEach(type=>{ %>
-        <%= type.type.name %>
-    <% }) %>
-</p>
- 
+<body class="container whopokemon">
+    <div class="thatpokemon">
+        <h2>This pokemon is <span><%=pokemon.name%></span>
+            <form action="/pokemon" method="GET">
+                <input type="submit" value="Return to Fave">
+            </form>
+            <form action="/" method="GET">
+                <input type="submit" value="Return Home">
+            </form>
+        </h2>
+        <img src="<%=pokemon.sprites.other['official-artwork'].front_default%>" id="pokemon" width="400">
+        <p><span>Type</span>:
+            <% pokemon.types.forEach(type=>{ %>
+                <%= type.type.name %>
+            <% }) %>
+        </p>
+        <p><span>Abilities</span>:
+            <% pokemon.abilities.forEach(ability=>{ %>
+                <%= ability.ability.name %>
+            <% }) %>
+        </p>
+        <p id="moves"><span>Types:</span>
+            <% pokemon.types.forEach(type=>{ %>
+                <%= type.type.name %>
+            <% }) %>
+        </p>
+    </div>
+</body>
+
 

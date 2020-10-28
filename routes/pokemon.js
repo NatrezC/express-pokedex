@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
   // TODO: Get all records from the DB and render to view
   db.pokemon.findAll()
   .then(favorites=>{
+    //console.log(favorites)
     res.render('pokemon/index', {faves: favorites})
   }).catch(err=>{
     console.log('you got another err', err)
@@ -23,7 +24,8 @@ router.post('/', function(req, res) {
     defaults: {name: req.body.name}
   })
   .then(([created, wasCreated])=>{
-    res.send(created)
+    //res.send(created)
+    res.redirect('/pokemon')
     //res.render(created)
   })
   .catch(err =>{
@@ -49,4 +51,37 @@ router.get('/:idx', (req, res)=>{
   })
 })
 
+router.get('/delete/:idx' , (req, res)=>{
+  console.log(req.params.idx, '<-------')
+  db.pokemon.destroy({
+    where: {id: req.params.idx}
+  }).then(()=>{
+    res.redirect('/pokemon')
+  })
+})
+
+
+
+
+
+
+
+
+
 module.exports = router;
+
+// router.delete('/:idx', (req, res)=>{
+//   db.pokemon.findAll()
+//   .then(favorites =>{
+//     res.render('faves', {favorites: favorites})
+//   })
+//   //console.log('DELETE it', req.params.idx)
+//  // res.send('Deleting pokemon', req.params.idx)
+//  db.pokemon.destroy({
+//    where: {
+//      name: pokemon.name
+//    }
+//  }).then(numRowsDeleted=>{
+//    console.log('deleted')
+//  })
+// })

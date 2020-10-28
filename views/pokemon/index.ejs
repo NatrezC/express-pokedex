@@ -1,9 +1,19 @@
-<h1>Favorite Pokemon</h1>
-
-<ul>
-    <% faves.forEach(fave =>{ %>
-        <li>
-            <% fave.name %> 
-        </li>
-    <% })  %> 
-</ul>
+<body class="container favepage">
+    <div class="myfave">
+        <h1 class="titlefave">Favorite Pokemon   
+        </h1>
+        <ul class="mypokemon">
+            <% faves.forEach(fave =>{ %>
+                <li>
+                    <%= fave.name %> 
+                    <form action="/pokemon/delete/<%=fave.id%>" method="DELETE">
+                        <input type="submit" value="Delete">
+                    </form>
+                    <form action="/pokemon/<%=fave.id%>" method="GET">
+                        <input type="submit" value="View">
+                    </form>
+                </li>
+            <% })  %> 
+        </ul>
+    </div>
+</body>

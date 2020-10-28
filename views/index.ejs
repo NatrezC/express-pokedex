@@ -1,16 +1,22 @@
-<div class="container">
-  <h1 class="text-center">The Original 151 Pokemon</h1>
-  <p class="text-center">
-    <a href="/pokemon">Favorites</a>
+<div class="container mainpage">
+  <h1 class="text-center" id="title"></h1>
+  <p class="text-center" id="favorites">
+    <a href="/pokemon" >Favorites</a>
   </p>
-
-  <% pokemon.forEach(function(pokemon) { %>
-    <div class="well">
-      <h2><%= pokemon.name %></h2>
-      <form method="POST" action="/pokemon">
-        <input hidden type="text" name="name" value="<%= pokemon.name %>">
-        <button class="btn btn-primary" type="submit">Add to Favorite Pokemon</button>
-      </form>
-    </div>
-  <% }); %>
+  <div class="allpokemon">
+    <% pokemon.forEach(function(pokemon) { %>
+      <div class="well">
+        <% let url =  pokemon.url %>
+        <% let pokeIndex = url.slice(34, url.length-1)%>
+        <h2><%= pokemon.name %></h2>
+        <div class="mppokemon">
+          <img src="<%=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeIndex}.png`%>" width="150">
+        </div>
+        <form method="POST" action="/pokemon">
+          <input hidden type="text" name="name" value="<%= pokemon.name %>">
+          <button class="btn btn-primary" type="submit">Add to Favorite Pokemon</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
 </div>
